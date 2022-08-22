@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:status_alert/status_alert.dart';
 import 'package:toast/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:workout_app/Pages/home_page.dart';
+import 'package:workout_app/services/dummy.dart';
 
 class QrView extends StatefulWidget {
   const QrView({Key? key}) : super(key: key);
@@ -20,8 +22,16 @@ class _QrViewState extends State<QrView> {
   QRViewController? controller;
   Barcode? result;
   int onSelectedIndex = 0;
-  String _result = "";
-
+  List<clubDummy> clubData = [
+    clubDummy(club_id: "SC"),
+    clubDummy(club_id: "OBP"),
+    clubDummy(club_id: "M2S"),
+    clubDummy(club_id: "BLM"),
+    clubDummy(club_id: "BSR"),
+    clubDummy(club_id: "MBH"),
+    clubDummy(club_id: "PLB"),
+    clubDummy(club_id: "CPK"),
+  ];
   @override
   Widget build(BuildContext context) {
     readQR();
@@ -29,21 +39,20 @@ class _QrViewState extends State<QrView> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.white12,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: (() => Navigator.of(context).pop()),
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back_ios),
+        //   onPressed: () {},
+        // ),
         title: Text("Scan QR"),
         centerTitle: true,
-        actions: [
-          IconButton(
-            color: Colors.white,
-            icon: Icon(Icons.camera),
-            onPressed: () async {
-              reassemble();
-            },
-          )
-        ],
+        // actions: [
+        //   IconButton(
+        //     color: Colors.white,
+        //     icon: Icon(Icons.camera),
+        //     onPressed: () async {
+        //       reassemble();
+        //     },
+        //   )
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -163,7 +172,6 @@ class _QrViewState extends State<QrView> {
   void readQR() {
     if (result != null) {
       controller!.pauseCamera();
-      print(result!.code);
       controller!.dispose();
     }
   }
@@ -175,15 +183,48 @@ class _QrViewState extends State<QrView> {
       setState(() {
         result = scanData;
       });
-
-      QuickAlert.show(
-        context: context,
-        type: QuickAlertType.success,
-        title: "Login Berhasil",
-        autoCloseDuration: Duration(seconds: 10),
-        onCancelBtnTap: () => Navigator.of(context).pop(),
-      );
+      valueData();
     });
+  }
+
+  void valueData() {
+    if (clubData
+        .where((element) => element.club_id == result!.code)
+        .toList()
+        .isNotEmpty) {
+      StatusAlert.show(context,
+          duration: Duration(seconds: 2),
+          title: 'success',
+          titleOptions: StatusAlertTextConfiguration(
+            style: TextStyle(color: Colors.white),
+          ),
+          subtitle: 'Berhasil Checkin',
+          subtitleOptions: StatusAlertTextConfiguration(
+            style: TextStyle(color: Colors.white),
+          ),
+          configuration: IconConfiguration(icon: Icons.done),
+          borderRadius: BorderRadius.circular(50),
+          backgroundColor: Colors.green);
+    } else {
+      StatusAlert.show(context,
+          duration: Duration(seconds: 2),
+          title: 'failed',
+          titleOptions: StatusAlertTextConfiguration(
+              style: TextStyle(color: Colors.white)),
+          subtitle: "Gagal Checkin",
+          subtitleOptions: StatusAlertTextConfiguration(
+              style: TextStyle(color: Colors.white)),
+          configuration:
+              IconConfiguration(icon: Icons.close, color: Colors.white),
+          borderRadius: BorderRadius.circular(50),
+          backgroundColor: Colors.red);
+    }
+    bar();
+  }
+
+  void bar() async {
+    await Future.delayed(Duration(seconds: 3));
+    Navigator.of(context).pop();
   }
 
   @override

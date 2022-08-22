@@ -15,3 +15,18 @@ final List StandartPlaces = [
   "Semarang",
   "Palembang",
 ];
+
+class clubDummy {
+  String? club_id;
+  clubDummy({
+    this.club_id,
+  });
+}
+
+class foodCalory {
+  int? protein;
+  int? lemak;
+  int? karbohidrat;
+  int? kalori;
+  foodCalory({this.protein, this.lemak, this.karbohidrat, this.kalori});
+}
