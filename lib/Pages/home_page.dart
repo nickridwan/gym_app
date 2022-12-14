@@ -67,9 +67,31 @@ class _HomePageState extends State<HomePage> {
                           color: Color(0xff40d876)),
                       child: Center(
                         child: IconButton(
-                          onPressed: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: ((context) => ProfilePage()))),
+                          onPressed: () => Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return ScaleTransition(
+                                  alignment: Alignment.bottomCenter,
+                                  scale:
+                                      Tween<double>(begin: 0.9, end: 1).animate(
+                                    CurvedAnimation(
+                                      parent: animation,
+                                      curve: Curves.easeInOutSine,
+                                    ),
+                                  ),
+                                  child: child,
+                                );
+                              },
+                              transitionDuration: Duration(milliseconds: 50),
+                              pageBuilder: (BuildContext context,
+                                  Animation<double> animation,
+                                  Animation<double> secondaryAnimation) {
+                                return ProfilePage();
+                              },
+                            ),
+                          ),
                           icon: Icon(
                             Icons.person,
                             color: Colors.white,
@@ -92,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                           height: 50,
                           width: MediaQuery.of(context).size.width / 1.3,
                           decoration: BoxDecoration(
-                              color: boxColor,
+                              color: bgColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: Padding(
@@ -162,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 width: 150,
                                 decoration: BoxDecoration(
-                                    color: boxColor,
+                                    color: bgColor,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Column(
                                   mainAxisAlignment:
@@ -267,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                               child: Container(
                                 width: 150,
                                 decoration: BoxDecoration(
-                                    color: boxColor,
+                                    color: bgColor,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Column(
                                   mainAxisAlignment:

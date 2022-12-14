@@ -41,6 +41,7 @@ dependencies:
   toast: ^0.3.0
   quickalert: ^0.0.2
   status_alert: ^1.0.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

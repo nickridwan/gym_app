@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:workout_app/Pages/kalorimeter_page.dart';
+import 'package:workout_app/Pages/kalorimeter/intro.dart';
+import 'package:workout_app/Pages/kalorimeter/kalorimeter_page.dart';
 import 'package:workout_app/Pages/membership.dart';
 import 'package:workout_app/Pages/qrcode.dart';
 import 'package:workout_app/Pages/welcome_page.dart';
@@ -104,14 +105,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     GestureDetector(
                       onTap: (() => Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => PageCalculate(),
+                              builder: (context) => IntroPage(),
                             ),
                           )),
                       child: Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                            color: boxColor,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(16)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -150,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: boxColor,
+                          color: bgColor,
                           borderRadius: BorderRadius.circular(16)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -188,7 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: boxColor,
+                          color: bgColor,
                           borderRadius: BorderRadius.circular(16)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -229,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                            color: boxColor,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(16)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),

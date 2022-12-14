@@ -24,9 +24,11 @@ class clubDummy {
 }
 
 class foodCalory {
+  String? food;
   int? protein;
   int? lemak;
   int? karbohidrat;
   int? kalori;
-  foodCalory({this.protein, this.lemak, this.karbohidrat, this.kalori});
+  foodCalory(
+      {this.protein, this.lemak, this.karbohidrat, this.kalori, this.food});
 }

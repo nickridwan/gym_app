@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workout_app/Widget/dropdown.dart';
+import 'package:workout_app/services/food_model.dart';
 import 'package:workout_app/services/theme.dart';
+import "package:http/http.dart" as http;
+import "dart:convert";
 
 class PageCalculate extends StatefulWidget {
   const PageCalculate({Key? key}) : super(key: key);
@@ -22,21 +25,39 @@ class PageCalculateState extends State<PageCalculate> {
   MethodModel? AgeValue;
   ManyActivity? ActivityValue;
   ManyEating? EatValue;
+  // List<FoodModel> foodData = [];
+  bool isLoading = false;
 
   void genderValue() {
-    setState(() {
-      !manGender
-          ? womanGender
-          : !womanGender
-              ? manGender
-              : !manGender;
-    });
+    setState(() {});
   }
+
+  // Future<void> getFoodNut() async {
+  //   try {
+  //     http.Response response = await http.get(Uri.parse(
+  //         "https://api.nal.usda.gov/fdc/v1/foods/list?api_key=pNj72py6zCpdfEZAhLLvCPu2nv6QkMMS5YyyqyPp"));
+  //     print(response.body);
+  //     foodData = (json.decode(response.body) as List) != Null &&
+  //             (json.decode(response.body) as List).isNotEmpty
+  //         ? (json.decode(response.body) as List)
+  //             .map((f) => FoodModel.fromJson(f))
+  //             .toList()
+  //         : [];
+  //   } catch (e) {
+  //     print("error $e");
+  //   }
+  // }
+
+  // @override
+  // void initState() {
+  //   getFoodNut();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: boxColor,
+      backgroundColor: bgColor,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -111,7 +132,7 @@ class PageCalculateState extends State<PageCalculate> {
                                   setState(() {
                                     womanGender = value!;
                                     genderValue();
-  
+
                                     print("Wanita");
                                   });
                                 }),
@@ -131,7 +152,7 @@ class PageCalculateState extends State<PageCalculate> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: boxColor,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
@@ -143,7 +164,7 @@ class PageCalculateState extends State<PageCalculate> {
                           hintText: "Masukan Umur",
                           hintStyle: TextStyle(color: Colors.white)),
                       value: AgeValue,
-                      dropdownColor: boxColor,
+                      dropdownColor: bgColor,
                       iconEnabledColor: Colors.white,
                       items: methodData
                           .map((e) => DropdownMenuItem<MethodModel>(
@@ -172,7 +193,7 @@ class PageCalculateState extends State<PageCalculate> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: boxColor,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
@@ -204,7 +225,7 @@ class PageCalculateState extends State<PageCalculate> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: boxColor,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
@@ -236,7 +257,7 @@ class PageCalculateState extends State<PageCalculate> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: boxColor,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
@@ -248,7 +269,7 @@ class PageCalculateState extends State<PageCalculate> {
                           hintText: "Seberapa Sering Berolah Raga",
                           hintStyle: TextStyle(color: Colors.white)),
                       value: ActivityValue,
-                      dropdownColor: boxColor,
+                      dropdownColor: bgColor,
                       iconEnabledColor: Colors.white,
                       items: manySportData
                           .map((e) => DropdownMenuItem<ManyActivity>(
@@ -277,7 +298,7 @@ class PageCalculateState extends State<PageCalculate> {
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: boxColor,
+                  color: bgColor,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
@@ -289,7 +310,7 @@ class PageCalculateState extends State<PageCalculate> {
                           hintText: "Berapa kali Makan sehari",
                           hintStyle: TextStyle(color: Colors.white)),
                       value: EatValue,
-                      dropdownColor: boxColor,
+                      dropdownColor: bgColor,
                       iconEnabledColor: Colors.white,
                       items: manyEatData
                           .map((e) => DropdownMenuItem<ManyEating>(

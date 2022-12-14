@@ -21,7 +21,7 @@ void filterSheet(context) {
             topLeft: Radius.circular(10),
             topRight: Radius.circular(10),
           ),
-          color: boxColor,
+          color: bgColor,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -60,7 +60,7 @@ class _PremiumPageState extends State<PremiumPage> {
               height: 200,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: boxColor, borderRadius: BorderRadius.circular(10)),
+                  color: bgColor, borderRadius: BorderRadius.circular(10)),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 90),
@@ -91,7 +91,7 @@ class _PremiumPageState extends State<PremiumPage> {
               height: 200,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  color: boxColor, borderRadius: BorderRadius.circular(10)),
+                  color: bgColor, borderRadius: BorderRadius.circular(10)),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 120),

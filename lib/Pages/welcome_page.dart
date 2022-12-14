@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workout_app/Pages/home_page.dart';
 import 'package:workout_app/Pages/profile_page.dart';
+import 'package:workout_app/services/theme.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -36,21 +37,11 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "HARD",
-                    style: GoogleFonts.bebasNeue(
-                        fontSize: 32, color: Colors.white, letterSpacing: 1.8),
-                  ),
+                  Text("HARD", style: titleColor1),
                   SizedBox(
                     width: 10,
                   ),
-                  Text(
-                    "ELEMENT",
-                    style: GoogleFonts.bebasNeue(
-                        fontSize: 32,
-                        color: Color(0xff40d876),
-                        letterSpacing: 1.8),
-                  ),
+                  Text("ELEMENT", style: titleColor2),
                 ],
               ),
             ),
@@ -72,7 +63,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Text(
                     "we want to know more about you, follow the next steps\n to complete the information",
                     style: GoogleFonts.lato(
-                        fontSize: 12,
+                        fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
                   ),
@@ -143,7 +134,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       children: [
                         TextButton(
                           child: Text(
-                            "Skip Intro",
+                            "Kalori Meter",
                             style: GoogleFonts.lato(
                               fontSize: 16,
                               color: Colors.white,
@@ -156,13 +147,12 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                         GestureDetector(
                           onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: ((context) => HomePage()))),
+                              MaterialPageRoute(builder: ((_) => HomePage()))),
                           child: Container(
                             width: 139,
                             height: 39,
                             decoration: BoxDecoration(
-                                color: Color(0xff40d876),
+                                color: boxColor,
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                                 child: Text(
