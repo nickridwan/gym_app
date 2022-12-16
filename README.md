@@ -2,9 +2,9 @@
 
 A new Flutter project.
 
-<img src="/repository/assets/img-1.png" alt="Employee data" title="Employee Data title">
-<img src="/repository/assets/img-2.png" alt="Employee data" title="Employee Data title">
-<img src="/repository/assets/img-3.png" alt="Employee data" title="Employee Data title">
+<img src="/repository/assets/img-1.jpeg" alt="Employee data" title="Employee Data title">
+<img src="/repository/assets/img-2.jpeg" alt="Employee data" title="Employee Data title">
+<img src="/repository/assets/img-3.jpeg" alt="Employee data" title="Employee Data title">
 
 ## Getting Started
 
